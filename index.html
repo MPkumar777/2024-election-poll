@@ -1,1 +1,28 @@
+const voteButton1 = document.getElementById('vote1');
+const voteButton2 = document.getElementById('vote2');
+const percentage1Element = document.getElementById('percentage1');
+const percentage2Element = document.getElementById('percentage2');
 
+let totalVotes = 0;
+let votesCandidate1 = 0;
+let votesCandidate2 = 0;
+
+voteButton1.addEventListener('click', () => {
+    votesCandidate1++;
+    totalVotes++;
+    updatePercentages();
+});
+
+voteButton2.addEventListener('click', () => {
+    votesCandidate2++;
+    totalVotes++;
+    updatePercentages();
+});
+
+function updatePercentages() {
+    const percentage1 = ((votesCandidate1 / totalVotes) * 100).toFixed(2);
+    const percentage2 = ((votesCandidate2 / totalVotes) * 100).toFixed(2);
+
+    percentage1Element.textContent = `${percentage1}%`;
+    percentage2Element.textContent = `${percentage2}%`;
+}
